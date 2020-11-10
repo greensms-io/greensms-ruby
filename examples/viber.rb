@@ -2,7 +2,7 @@
 
 options = { user:"user", pass: "pass", from: "optional", to: "98765432101", txt: "This is an example message" }
 
-response = GreensmsRuby::Sms.send_message(options)
+response = GreensmsRuby::Viber.send_message(options)
 
 response.body // this is for getting request_id
 
@@ -11,4 +11,4 @@ response.body // this is for getting request_id
 
 options = { user:"user", pass: "pass", id: "request_id here" }
 
-response = GreensmsRuby::Sms.check_status(options)
+response = GreensmsRuby::Viber.check_status(options)
