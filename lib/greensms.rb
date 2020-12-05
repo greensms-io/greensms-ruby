@@ -1,6 +1,7 @@
 require "greensms/version"
+require "greensms/client"
 
-module Greensms
+module GreenSMS
   class Error < StandardError; end
-  # Your code goes here...
+
 end

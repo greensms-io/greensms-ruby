@@ -1,3 +1,3 @@
-module Greensms
+module GreenSMS
   VERSION = "0.1.0"
 end
