@@ -10,8 +10,6 @@ module GreenSMS
 
       def register_modules(shared_options, filters = {})
 
-        puts @module_map
-
         if filters.nil? then
           filters = {}
         end
@@ -31,8 +29,6 @@ module GreenSMS
           is_static_module =  filters.has_key?('load_static') && module_info.has_key?('static') && filters['load_static'] == true && module_info['static'] = true
 
           next if is_static_module
-
-          puts module_versions
 
           module_versions.each do | version, version_functions |
             if !@module_map[module_name].has_key?(version) then
