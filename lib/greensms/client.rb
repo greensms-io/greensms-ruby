@@ -2,6 +2,7 @@ require "greensms/version"
 require "greensms/utils/str"
 require "greensms/utils/url"
 require "greensms/utils/version"
+require "greensms/http/rest"
 
 module GreenSMS
   class Error < StandardError; end
@@ -28,16 +29,21 @@ module GreenSMS
       shared_options = {
         'use_token_for_requests' => @use_token_for_requests,
         'version' => GreenSMS.get_version(@version),
-        'rest_client' => self.get_http_client(use_camel_case: @camel_case_response),
+        'rest_client' => _get_http_client(use_camel_case: @camel_case_response),
         'base_url' => GreenSMS.base_url()
       }
 
-      # add_modules(shared_options)
+      _add_modules(shared_options)
       puts "Init GreenSMS"
     end
 
     private
-    def get_http_client(use_camel_case:false)
+    def _add_modules(shared_options)
+      url = GreenSMS.base_url() + "/account/balance"
+      rest_client = shared_options['rest_client'].request(method: 'GET', url: url)
+    end
+
+    def _get_http_client(**kwargs)
       puts "HTTP Clients"
       default_params = {}
 
@@ -46,6 +52,18 @@ module GreenSMS
         default_params['pass'] = @pass
       end
 
+      http_args = {
+        'default_params': default_params,
+        'default_data': {},
+        'token': @token
+      }
+
+      kwargs.each do |key, val|
+        http_args[key] = val
+      end
+
+      rest_client = GreenSMS::Http::Client.new(http_args)
+      return rest_client
     end
 
 
