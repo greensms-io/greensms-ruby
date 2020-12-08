@@ -67,7 +67,6 @@ module GreenSMS
         end
 
         url = url + "?" + hash_to_query(params)
-        puts url
 
         resp = @connection.send(method.downcase.to_sym, url, d)
         resp = JSON.parse resp.body
