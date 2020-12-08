@@ -42,6 +42,7 @@ module GreenSMS
       }
 
       _add_modules(shared_options)
+
     end
 
     private
@@ -49,15 +50,21 @@ module GreenSMS
 
       module_loader = GreenSMS::API::ModuleLoader.new
       modules = module_loader.register_modules(shared_options)
+      build_module_invoker(self, modules)
 
-      modules.each do |name, value|
-        puts value
-        puts value.class
-        instance_variable_set("@#{name}", value)
-        self.class.module_eval("attr_reader :#{name}")
+    end
+
+    def build_module_invoker(obj, hash)
+      hash.each do |name, value|
+        if value.is_a?(Hash) then
+          item = MethodInvoker.new
+          obj.instance_variable_set("@#{name}", item)
+          obj.class.module_eval("attr_reader :#{name}")
+          build_module_invoker(item, value)
+        else
+          obj.create_method(name, value)
+        end
       end
-
-      modules.each { |name, value|  }
     end
 
     def _get_http_client(**kwargs)
