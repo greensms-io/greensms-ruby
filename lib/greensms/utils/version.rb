@@ -9,8 +9,10 @@ module GreenSMS
 
     version = version.downcase
     if GreenSMS::VERSIONS.has_key? version then
-      return GreenSMS::VERSION[version]
+      version = GreenSMS::VERSIONS[version]
+    else
+      raise StandardError.new "Invalid Version"
     end
-    raise StandardError.new "Invalid Version"
+    return version
   end
 end
