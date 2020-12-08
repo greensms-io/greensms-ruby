@@ -50,7 +50,7 @@ module GreenSMS
               end
 
               url_args = []
-              if !module_info.has_key? 'static' || module_info['sgtatic'] != true then
+              if !module_info.has_key?('static') || module_info['static'] != true then
                 url_args.append(module_name)
               end
               url_args.append(function_name)
@@ -63,7 +63,8 @@ module GreenSMS
                 @module_map[module_name][function_name] = @module_map[module_name][version][function_name]
               end
 
-              if module_info.has_key? 'static' && module_info['static'] == true then
+
+              if module_info.has_key?('static') && module_info['static'] == true then
                 @module_map[function_name] = @module_map[module_name][version][function_name]
                 @module_map.delete(module_name)
               end
