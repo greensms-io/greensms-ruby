@@ -13,6 +13,7 @@ module GreenSMS
     end
 
     private
+
     def _get_error_type(code)
       case code
       when 0

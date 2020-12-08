@@ -4,7 +4,6 @@ require "json"
 require "greensms/utils/str"
 require "greensms/http/error"
 
-
 module GreenSMS
   module Http
     class Client
@@ -17,32 +16,29 @@ module GreenSMS
         opts.each { |name, value| instance_variable_set("@#{name}", value) }
       end
 
-
       def request(kwargs)
-
-        if ! kwargs.has_key? 'method' then
+        if !kwargs.has_key? "method"
           raise StandardError.new "Http Method is required"
         end
-        method = kwargs['method']
+        method = kwargs["method"]
 
-        if ! kwargs.has_key? 'url' then
+        if !kwargs.has_key? "url"
           raise StandardError.new "URL is required"
         end
 
-        url = kwargs['url']
+        url = kwargs["url"]
 
-        kwargs.delete('url')
-        kwargs.delete('method')
+        kwargs.delete("url")
+        kwargs.delete("method")
 
-        headers = { }
-        if kwargs.has_key? 'headers' then
-          kwargs['headers'].each { |name, value| headers[name] = value }
+        headers = {}
+        if kwargs.has_key? "headers"
+          kwargs["headers"].each { |name, value| headers[name] = value }
         end
 
-        if ! GreenSMS.is_null_or_empty(@token) then
-          headers['Authorization'] = 'Bearer ' + @token
+        if !GreenSMS.is_null_or_empty(@token)
+          headers["Authorization"] = "Bearer " + @token
         end
-
 
         params = {}
 
@@ -53,16 +49,16 @@ module GreenSMS
           f.adapter Faraday.default_adapter
         end
 
-        if ! @default_params.empty? then
+        if !@default_params.empty?
           @default_params.each { |name, value| params[name] = value }
         end
 
-        if kwargs.has_key? 'params' then
-          kwargs['params'].each { |name, value| params[name] = value }
+        if kwargs.has_key? "params"
+          kwargs["params"].each { |name, value| params[name] = value }
         end
 
         d = {}
-        if method == 'POST' then
+        if method == "POST"
           d = d.to_json
         end
 
@@ -70,11 +66,11 @@ module GreenSMS
 
         resp = @connection.send(method.downcase.to_sym, url, d)
         resp = JSON.parse resp.body
-        if resp.has_key? 'error' then
-          raise RestError.new(resp['error'], resp['code'])
+        if resp.has_key? "error"
+          raise RestError.new(resp["error"], resp["code"])
         end
 
-        if @use_camel_case then
+        if @use_camel_case
           resp = GreenSMS.camelize(resp)
         end
 
@@ -82,11 +78,10 @@ module GreenSMS
       end
 
       private
-      def hash_to_query(hash)
-        return URI.encode(hash.map{|k,v| "#{k}=#{v}"}.join("&"))
-      end
 
+      def hash_to_query(hash)
+        return URI.encode(hash.map { |k, v| "#{k}=#{v}" }.join("&"))
+      end
     end
   end
 end
-
