@@ -59,25 +59,30 @@ module GreenSMS
               @module_map[module_name][version][function_name] = module_api(
                         shared_options:shared_options, api_url:api_url, definition:definition, module_schema:module_schema)
 
+              if version == current_version then
+                @module_map[module_name][function_name] = @module_map[module_name][version][function_name]
+              end
+
+              if module_info.has_key? 'static' && module_info['static'] == true then
+                @module_map[function_name] = @module_map[module_name][version][function_name]
+                @module_map.delete(module_name)
+              end
+
             end
           end
         end
-
-        puts @module_map
-
         return @module_map
 
       end
 
       private
       def module_api(kwargs)
-
-        rest_client = kwargs[:shared_options][:rest_client]
+        rest_client = kwargs[:shared_options]["rest_client"]
         module_schema = kwargs['module_schema']
 
         request_params = {
-            'url' =>  kwargs['api_url'],
-            'method' => kwargs[:definition][:method],
+            'url' =>  kwargs[:api_url],
+            'method' => kwargs[:definition]["method"],
         }
 
         mod = GreenSMS::API::Module.new(rest_client, module_schema, request_params)
