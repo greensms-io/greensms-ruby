@@ -10,4 +10,3 @@ puts @client.account.token(token: 100)
 
 puts "Tariff"
 puts @client.account.tariff
-
