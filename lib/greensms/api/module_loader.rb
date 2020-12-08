@@ -40,7 +40,7 @@ module GreenSMS
               end
 
               module_schema = nil
-              schema_exists = module_info.has_key? "schema" && module_info["schema"].has_key?(version) && module_info["schema"][version].has_key?(function_name)
+              schema_exists = module_info.has_key?("schema") && module_info["schema"].has_key?(version) && module_info["schema"][version].has_key?(function_name)
               if schema_exists == true
                 module_schema = module_info["schema"][version][function_name]
               end
@@ -74,7 +74,7 @@ module GreenSMS
 
       def module_api(kwargs)
         rest_client = kwargs[:shared_options]["rest_client"]
-        module_schema = kwargs["module_schema"]
+        module_schema = kwargs[:module_schema]
 
         request_params = {
           "url" => kwargs[:api_url],
