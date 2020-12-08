@@ -1,4 +1,13 @@
 require_relative "example_helper"
-client = GreenSMS::GreenSMSClient.new(user: 'test', pass: 'test', camel_case_response: true)
 
-puts client.account.balance
+@client = Example::CLIENT
+
+puts "Account Balance"
+puts @client.account.balance
+
+puts "Access Token"
+puts @client.account.token(token: 100)
+
+puts "Tariff"
+puts @client.account.tariff
+
