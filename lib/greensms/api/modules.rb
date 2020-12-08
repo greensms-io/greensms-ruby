@@ -18,6 +18,19 @@ module GreenSMS
           }
         }
       }
-    }
+    },
+    'general' =>  {
+      'schema' =>  {},
+      'static' =>  true,
+      'versions' =>  {
+        'v1' =>  {
+          'status' =>  {
+            'args' =>  nil,
+            'method' =>  'GET',
+          },
+        },
+      },
+    },
+
   }
 end
