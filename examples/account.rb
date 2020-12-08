@@ -1,4 +1,4 @@
-require_relative "example_helper"
+require_relative "init"
 
 @client = Example::CLIENT
 

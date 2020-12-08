@@ -1,5 +1,6 @@
-require_relative "example_helper"
+require_relative "init"
 
-client = GreenSMS::GreenSMSClient.new(user: 'test', pass: 'test', camel_case_response: true)
+@client = Example::CLIENT
 
-puts client.status
+puts "Server Status"
+puts @client.status
