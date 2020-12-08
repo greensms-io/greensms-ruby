@@ -3,9 +3,15 @@ require "greensms/utils/str"
 require "greensms/utils/url"
 require "greensms/utils/version"
 require "greensms/http/rest"
+require "greensms/api/module_loader"
 
 module GreenSMS
   class Error < StandardError; end
+
+
+  class MethodInvoker
+
+  end
 
   class GreenSMSClient
     def initialize(user: nil, pass: nil, token: nil, version: nil, camel_case_response: false, use_token_for_requests: false)
@@ -34,17 +40,25 @@ module GreenSMS
       }
 
       _add_modules(shared_options)
-      puts "Init GreenSMS"
     end
 
     private
     def _add_modules(shared_options)
-      url = GreenSMS.base_url() + "/account/balance"
-      rest_client = shared_options['rest_client'].request(method: 'GET', url: url)
+
+      module_loader = GreenSMS::API::ModuleLoader.new
+      modules = module_loader.register_modules(shared_options)
+
+      modules.each do |name, value|
+        puts value
+        puts value.class
+        instance_variable_set("@#{name}", value)
+        self.class.module_eval("attr_reader :#{name}")
+      end
+
+      modules.each { |name, value|  }
     end
 
     def _get_http_client(**kwargs)
-      puts "HTTP Clients"
       default_params = {}
 
       if GreenSMS.is_null_or_empty(@token) && !GreenSMS.is_null_or_empty(@user) then
