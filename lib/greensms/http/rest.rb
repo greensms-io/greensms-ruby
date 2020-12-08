@@ -1,4 +1,3 @@
-require "cgi"
 require "faraday"
 require "json"
 require "greensms/utils/str"
@@ -80,7 +79,7 @@ module GreenSMS
       private
 
       def hash_to_query(hash)
-        return CGI.escape(hash.map { |k, v| "#{k}=#{v}" }.join("&"))
+        return hash.map { |k, v| "#{k}=#{v}" }.join("&")
       end
     end
   end
