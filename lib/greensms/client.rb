@@ -5,15 +5,17 @@ require "greensms/utils/version"
 require "greensms/http/rest"
 require "greensms/api/module_loader"
 
+
 module GreenSMS
   class Error < StandardError; end
 
-
   class MethodInvoker
-
+    def create_method(name, block)
+      self.class.send(:define_method, name, &block)
+    end
   end
 
-  class GreenSMSClient
+  class GreenSMSClient < MethodInvoker
     def initialize(user: nil, pass: nil, token: nil, version: nil, camel_case_response: false, use_token_for_requests: false)
       @user = ENV.fetch('GREENSMS_USER', user)
       @pass = ENV.fetch('GREENSMS_PASS', pass)
