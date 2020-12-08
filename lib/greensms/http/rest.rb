@@ -18,17 +18,18 @@ module GreenSMS
       end
 
 
-      def request(**kwargs)
+      def request(kwargs)
 
-        if ! kwargs.has_key? :method then
+        if ! kwargs.has_key? 'method' then
           raise StandardError.new "Http Method is required"
         end
-        method = kwargs[:method]
+        method = kwargs['method']
 
-        if ! kwargs.has_key? :url then
+        if ! kwargs.has_key? 'url' then
           raise StandardError.new "URL is required"
         end
-        url = kwargs[:url]
+
+        url = kwargs['url']
 
         kwargs.delete('url')
         kwargs.delete('method')

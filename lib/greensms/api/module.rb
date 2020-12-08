@@ -13,7 +13,7 @@ module GreenSMS
       end
 
 
-      def api_func(kwargs)
+      def api_func(kwargs = {})
 
         if !@module_schema.nil? then
           errors = GreenSMS.validate(@module_schema, kwargs)
@@ -26,6 +26,7 @@ module GreenSMS
         kwargs.each { |name, value| api_params[name] = value }
         request_params = @params.clone
         request_params['params'] = api_params
+        puts request_params
 
         response = @rest_client.request(request_params)
         return response
