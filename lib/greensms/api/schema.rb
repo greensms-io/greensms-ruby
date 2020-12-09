@@ -56,8 +56,8 @@ module GreenSMS
         },
       },
     },
-    "call" => common_schema,
-    "hlr" => common_schema,
+    "call" => common_schema.clone,
+    "hlr" => common_schema.clone,
     "whois" => {
       "v1" => {
         "lookup" => {
@@ -70,7 +70,7 @@ module GreenSMS
       },
     },
     "general" => {},
-    "voice" => common_schema.deep_merge(
+    "voice" => common_schema.clone.deep_merge(
       {
         "v1" => {
           "send" => {
@@ -92,7 +92,7 @@ module GreenSMS
         },
       }
     ),
-    "pay" => common_schema.deep_merge({
+    "pay" => common_schema.clone.deep_merge({
       "v1" => {
         "send" => {
           "type" => "object",
@@ -109,7 +109,7 @@ module GreenSMS
         },
       },
     }),
-    "sms" => common_schema.deep_merge(
+    "sms" => common_schema.clone.deep_merge(
       {
         "v1" => {
           "send" => {
@@ -134,7 +134,7 @@ module GreenSMS
         },
       }
     ),
-    "viber" => common_schema.deep_merge(
+    "viber" => common_schema.clone.deep_merge(
       {
         "v1" => {
           "send" => {
@@ -157,7 +157,7 @@ module GreenSMS
         },
       }
     ),
-    "social" => common_schema.deep_merge(
+    "social" => common_schema.clone.deep_merge(
       {
         "v1" => {
           "send" => {
@@ -182,6 +182,5 @@ module GreenSMS
         },
       }
     ),
-
   }
 end
