@@ -69,7 +69,7 @@ module GreenSMS
 
           obj.instance_eval %{
             def #{key_name}(*args)
-              instance_variable_get("@#{key_name}").call(args)
+              instance_variable_get("@#{key_name}").call(*args)
             end
           }
         end

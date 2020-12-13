@@ -14,8 +14,9 @@ module GreenSMS
         kwargs.each { |name, value| @params[name] = value }
       end
 
-      def api_func(*kwargs)
-        kwargs = kwargs.to_hash
+      def api_func(kwargs = {})
+        kwargs = kwargs.transform_keys(&:to_s)
+
         if !@module_schema.nil?
           errors = GreenSMS.validate(@module_schema, kwargs)
           if !errors.nil?
