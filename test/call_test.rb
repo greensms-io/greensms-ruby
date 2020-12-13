@@ -18,6 +18,12 @@ class CallTest < Minitest::Test
     assert_equal true, resp.has_key?("status")
   end
 
-  # def test_validation_error
-  # end
+  def test_validation_error
+    sleep(10) ## Ensure this assert runs last
+    error = assert_raises(StandardError) do
+      @client = Utility::CLIENT
+      @client.call.send
+    end
+    assert_equal "Validation Error", error.message
+  end
 end
