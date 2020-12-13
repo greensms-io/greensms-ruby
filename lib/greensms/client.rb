@@ -12,7 +12,6 @@ module GreenSMS
   end
 
   class GreenSMSClient
-
     attr_reader :call
     attr_reader :voice
 
@@ -53,7 +52,7 @@ module GreenSMS
     end
 
     def build_module_invoker(obj, hash, obj_name)
-      hash.each do | key_name, key_value |
+      hash.each do |key_name, key_value|
         if key_value.is_a?(Hash)
           new_item = MethodInvoker.new
           build_module_invoker(new_item, key_value, key_name)

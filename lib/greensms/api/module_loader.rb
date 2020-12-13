@@ -53,7 +53,7 @@ module GreenSMS
 
               api_url = GreenSMS.build_url(shared_options["base_url"], url_args)
               @module_map[module_name][version][function_name] = module_api(
-                shared_options: shared_options, api_url: api_url, definition: definition, module_schema: module_schema,module_name:module_name, function_name: function_name
+                shared_options: shared_options, api_url: api_url, definition: definition, module_schema: module_schema, module_name: module_name, function_name: function_name,
               )
 
               if version == current_version

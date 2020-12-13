@@ -1,6 +1,5 @@
 require "greensms/api/schema"
 
-
 module GreenSMS
   MODULES = {
     "account" => {
@@ -75,80 +74,80 @@ module GreenSMS
         },
       },
     },
-    # "pay" => {
-    #   "schema" => GreenSMS::VALIDATION_SCHEMA["pay"],
-    #   "versions" => {
-    #     "v1" => {
-    #       "send" => {
-    #         "args" => ["params"],
-    #         "method" => "POST",
-    #       },
-    #       "status" => {
-    #         "args" => ["params"],
-    #         "method" => "GET",
-    #       },
-    #     },
-    #   },
-    # },
-    # "hlr" => {
-    #   "schema" => GreenSMS::VALIDATION_SCHEMA["hlr"],
-    #   "versions" => {
-    #     "v1" => {
-    #       "send" => {
-    #         "args" => ["params"],
-    #         "method" => "POST",
-    #       },
-    #       "status" => {
-    #         "args" => ["params"],
-    #         "method" => "GET",
-    #       },
-    #     },
-    #   },
-    # },
-    # "sms" => {
-    #   "schema" => GreenSMS::VALIDATION_SCHEMA["sms"],
-    #   "versions" => {
-    #     "v1" => {
-    #       "send" => {
-    #         "args" => ["params"],
-    #         "method" => "POST",
-    #       },
-    #       "status" => {
-    #         "args" => ["params"],
-    #         "method" => "GET",
-    #       },
-    #     },
-    #   },
-    # },
-    # "viber" => {
-    #   "schema" => GreenSMS::VALIDATION_SCHEMA["viber"],
-    #   "versions" => {
-    #     "v1" => {
-    #       "send" => {
-    #         "args" => ["params"],
-    #         "method" => "POST",
-    #       },
-    #       "status" => {
-    #         "args" => ["params"],
-    #         "method" => "GET",
-    #       },
-    #     },
-    #   },
-    # },
-    # "social" => {
-    #   "schema" => GreenSMS::VALIDATION_SCHEMA["social"],
-    #   "versions" => {
-    #     "v1" => {
-    #       "send" => {
-    #         "args" => ["params"],
-    #         "method" => "POST",
-    #       },
-    #       "status" => {
-    #         "args" => ["params"],
-    #         "method" => "GET",
-    #       },
-    #     },
-    #   },
-    # },
+  # "pay" => {
+  #   "schema" => GreenSMS::VALIDATION_SCHEMA["pay"],
+  #   "versions" => {
+  #     "v1" => {
+  #       "send" => {
+  #         "args" => ["params"],
+  #         "method" => "POST",
+  #       },
+  #       "status" => {
+  #         "args" => ["params"],
+  #         "method" => "GET",
+  #       },
+  #     },
+  #   },
+  # },
+  # "hlr" => {
+  #   "schema" => GreenSMS::VALIDATION_SCHEMA["hlr"],
+  #   "versions" => {
+  #     "v1" => {
+  #       "send" => {
+  #         "args" => ["params"],
+  #         "method" => "POST",
+  #       },
+  #       "status" => {
+  #         "args" => ["params"],
+  #         "method" => "GET",
+  #       },
+  #     },
+  #   },
+  # },
+  # "sms" => {
+  #   "schema" => GreenSMS::VALIDATION_SCHEMA["sms"],
+  #   "versions" => {
+  #     "v1" => {
+  #       "send" => {
+  #         "args" => ["params"],
+  #         "method" => "POST",
+  #       },
+  #       "status" => {
+  #         "args" => ["params"],
+  #         "method" => "GET",
+  #       },
+  #     },
+  #   },
+  # },
+  # "viber" => {
+  #   "schema" => GreenSMS::VALIDATION_SCHEMA["viber"],
+  #   "versions" => {
+  #     "v1" => {
+  #       "send" => {
+  #         "args" => ["params"],
+  #         "method" => "POST",
+  #       },
+  #       "status" => {
+  #         "args" => ["params"],
+  #         "method" => "GET",
+  #       },
+  #     },
+  #   },
+  # },
+  # "social" => {
+  #   "schema" => GreenSMS::VALIDATION_SCHEMA["social"],
+  #   "versions" => {
+  #     "v1" => {
+  #       "send" => {
+  #         "args" => ["params"],
+  #         "method" => "POST",
+  #       },
+  #       "status" => {
+  #         "args" => ["params"],
+  #         "method" => "GET",
+  #       },
+  #     },
+  #   },
+  # },
   }
 end

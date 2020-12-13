@@ -8,4 +8,4 @@ puts resp
 
 sleep(3)
 puts "Call Status"
-puts @client.call.status(id:resp['request_id'])
+puts @client.call.status(id: resp["request_id"])
