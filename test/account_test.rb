@@ -25,7 +25,7 @@ class AccountTest < Minitest::Test
 
   def test_raises_exception_on_no_creds
     assert_raises(StandardError) {
-      @c = GreenSMS::GreenSMSClient.new
+      @client = GreenSMS::GreenSMSClient.new
     }
   end
 
