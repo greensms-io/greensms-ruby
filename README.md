@@ -14,11 +14,15 @@ gem 'greensms'
 
 And then execute:
 
-    $ bundle install
+```bash
+$ bundle install
+```
 
 Or install it yourself as:
 
-    $ gem install greensms
+```
+$ gem install greensms
+```
 
 ## Sample Usage
 
