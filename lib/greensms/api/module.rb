@@ -3,14 +3,29 @@ require "greensms/utils/validator"
 module GreenSMS
   module API
     class Module
-      def initialize(rest_client, module_schema, kwargs)
+      attr_reader :module_schema
+      attr_reader :module_name
+      attr_reader :function_name
+
+      def initialize(rest_client, module_schema, kwargs, module_name, function_name)
         @rest_client = rest_client
         @module_schema = module_schema
+        @module_name = module_name
+        @function_name = function_name
+        # if module_name == "call" and function_name == "send"
+        # end
         @params = {}
         kwargs.each { |name, value| @params[name] = value }
       end
 
       def api_func(kwargs = {})
+
+          puts "Schema Start ------"
+          puts @module_name
+          puts @function_name
+          puts @module_schema
+          puts @params['url']
+          puts "Schema End ------"
         if !@module_schema.nil?
           errors = GreenSMS.validate(@module_schema, kwargs)
           if !errors.nil?

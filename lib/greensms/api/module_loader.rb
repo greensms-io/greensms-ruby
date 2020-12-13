@@ -53,7 +53,7 @@ module GreenSMS
 
               api_url = GreenSMS.build_url(shared_options["base_url"], url_args)
               @module_map[module_name][version][function_name] = module_api(
-                shared_options: shared_options, api_url: api_url, definition: definition, module_schema: module_schema,
+                shared_options: shared_options, api_url: api_url, definition: definition, module_schema: module_schema,module_name:module_name, function_name: function_name
               )
 
               if version == current_version
@@ -81,9 +81,8 @@ module GreenSMS
           "method" => kwargs[:definition]["method"],
         }
 
-        mod = GreenSMS::API::Module.new(rest_client, module_schema, request_params)
-        api_call = mod.method(:api_func)
-        return api_call
+        mod = GreenSMS::API::Module.new(rest_client, module_schema, request_params, kwargs[:module_name], kwargs[:function_name])
+        return mod # Return the module instance
       end
     end
   end
