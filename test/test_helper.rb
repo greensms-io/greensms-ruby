@@ -7,7 +7,7 @@ module Utility
   CLIENT = GreenSMS::GreenSMSClient.new(user: "test", pass: "test")
 
   class << self
-    def random_phone_number(min =  70000000111, max = 70009999999)
+    def random_phone_number(min = 70000000111, max = 70009999999)
       return random_number(min, max)
     end
 
