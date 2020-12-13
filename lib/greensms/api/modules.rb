@@ -3,37 +3,37 @@ require "greensms/api/schema"
 
 module GreenSMS
   MODULES = {
-    # "account" => {
-    #   "schema" => GreenSMS::VALIDATION_SCHEMA["account"],
-    #   "versions" => {
-    #     "v1" => {
-    #       "balance" => {
-    #         "args" => nil,
-    #         "method" => "GET",
-    #       },
-    #       "token" => {
-    #         "args" => ["params"],
-    #         "method" => "POST",
-    #       },
-    #       "tariff" => {
-    #         "args" => nil,
-    #         "method" => "GET",
-    #       },
-    #     },
-    #   },
-    # },
-    # "general" => {
-    #   "schema" => {},
-    #   "static" => true,
-    #   "versions" => {
-    #     "v1" => {
-    #       "status" => {
-    #         "args" => nil,
-    #         "method" => "GET",
-    #       },
-    #     },
-    #   },
-    # },
+    "account" => {
+      "schema" => GreenSMS::VALIDATION_SCHEMA["account"],
+      "versions" => {
+        "v1" => {
+          "balance" => {
+            "args" => nil,
+            "method" => "GET",
+          },
+          "token" => {
+            "args" => ["params"],
+            "method" => "POST",
+          },
+          "tariff" => {
+            "args" => nil,
+            "method" => "GET",
+          },
+        },
+      },
+    },
+    "general" => {
+      "schema" => {},
+      "static" => true,
+      "versions" => {
+        "v1" => {
+          "status" => {
+            "args" => nil,
+            "method" => "GET",
+          },
+        },
+      },
+    },
     "call" => {
       "schema" => GreenSMS::VALIDATION_SCHEMA["call"],
       "versions" => {
@@ -42,24 +42,24 @@ module GreenSMS
             "args" => ["params"],
             "method" => "POST",
           },
-          # "status" => {
-          #   "args" => ["params"],
-          #   "method" => "GET",
-          # },
+          "status" => {
+            "args" => ["params"],
+            "method" => "GET",
+          },
         },
       },
     },
-    # "whois" => {
-    #   "schema" => GreenSMS::VALIDATION_SCHEMA["whois"],
-    #   "versions" => {
-    #     "v1" => {
-    #       "lookup" => {
-    #         "args" => ["params"],
-    #         "method" => "GET",
-    #       },
-    #     },
-    #   },
-    # },
+    "whois" => {
+      "schema" => GreenSMS::VALIDATION_SCHEMA["whois"],
+      "versions" => {
+        "v1" => {
+          "lookup" => {
+            "args" => ["params"],
+            "method" => "GET",
+          },
+        },
+      },
+    },
     "voice" => {
       "schema" => GreenSMS::VALIDATION_SCHEMA["voice"],
       "versions" => {
@@ -68,10 +68,10 @@ module GreenSMS
             "args" => ["params"],
             "method" => "POST",
           },
-          # "status" => {
-          #   "args" => ["params"],
-          #   "method" => "GET",
-          # },
+          "status" => {
+            "args" => ["params"],
+            "method" => "GET",
+          },
         },
       },
     },
