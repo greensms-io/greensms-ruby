@@ -1,13 +1,11 @@
-// Using 
+require_relative "init"
 
-options = { user:"user", pass: "pass", from: "optional", to: "98765432101", txt: "This is an example message" }
+@client = Example::CLIENT
 
-response = GreensmsRuby::Hlr.send_message(options)
+puts "HLR Send"
+resp = @client.hlr.send(to: "79260000121", txt: "1221")
+puts resp
 
-response.body // this is for getting request_id
-
-// Check status 
-
-options = { user:"user", pass: "pass", id: "request_id here", to: "45345435345435" }
-
-response = GreensmsRuby::Hlr.check_status(options)
+sleep(3)
+puts "HLR Status"
+puts @client.hlr.status(id: resp["request_id"], to: "79260000121")

@@ -1,20 +1,12 @@
-// Using 
+require_relative "init"
 
-options = { user:"user", pass: "pass" }
+@client = Example::CLIENT
 
-response = GreensmsRuby::Account.balance_check(options)
+puts "Account Balance"
+puts @client.account.balance
 
-response.body // this is for getting request_id
+puts "Access Token"
+puts @client.account.token(token: 100)
 
-
-// Check tariff details 
-
-options = { user:"user", pass: "pass" }
-
-response = GreensmsRuby::Account.tariff_details(options)
-
-// Fetch access token 
-
-options = { user:"user", pass: "pass" }
-
-response = GreensmsRuby::Account.get_access_token(options)
+puts "Tariff"
+puts @client.account.tariff

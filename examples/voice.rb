@@ -1,14 +1,11 @@
-// Using 
+require_relative "init"
 
-options = { user:"user", pass: "pass", to: "98765432101", txt: "This is an example message", lang: "eng" }
+@client = Example::CLIENT
 
-response = GreensmsRuby::Voice.send_message(options)
+puts "Voice Send"
+resp = @client.voice.send(to: "79260000121", txt: "8601")
+puts resp
 
-response.body // this is for getting request_id
-
-
-// Check status 
-
-options = { user:"user", pass: "pass", id: "request_id here" }
-
-response = GreensmsRuby::Voice.check_status(options)
+sleep(3)
+puts "Voice Status"
+puts @client.voice.status(id: resp["request_id"])

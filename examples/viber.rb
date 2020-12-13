@@ -1,14 +1,11 @@
-// Using 
+require_relative "init"
 
-options = { user:"user", pass: "pass", from: "optional", to: "98765432101", txt: "This is an example message" }
+@client = Example::CLIENT
 
-response = GreensmsRuby::Viber.send_message(options)
+puts "Viber Send"
+resp = @client.viber.send(to: "79260000121", txt: "Hello Message Content")
+puts resp
 
-response.body // this is for getting request_id
-
-
-// Check status 
-
-options = { user:"user", pass: "pass", id: "request_id here" }
-
-response = GreensmsRuby::Viber.check_status(options)
+sleep(3)
+puts "Viber Status"
+puts @client.viber.status(id: resp["request_id"])

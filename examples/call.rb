@@ -1,14 +1,11 @@
-// Using 
+require_relative "init"
 
-options = { user:"user", pass: "pass", to: "98765432101" }
+@client = Example::CLIENT
 
-response = GreensmsRuby::Call.send_verification(options)
+puts "Call Send"
+resp = @client.call.send(to: "79260000112")
+puts resp
 
-response.body // this is for getting request_id
-
-
-// Check status 
-
-options = { user: "user", pass: "pass", id: "request_id here", to: "9887377382822" }
-
-response = GreensmsRuby::Call.check_status(options)
+sleep(3)
+puts "Call Status"
+puts @client.call.status(id: resp["request_id"])

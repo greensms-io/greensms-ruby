@@ -1,14 +1,11 @@
-// Using 
+require_relative "init"
 
-options = { user: "user", pass: "pass", to: "3432432424232432", amount: "999" }
+@client = Example::CLIENT
 
-response = GreensmsRuby::Pay.payment(options)
+puts "Pay Send"
+resp = @client.pay.send(to: "79260000121", amount: 10)
+puts resp
 
-response.body // this is for getting request_id
-
-
-// Check Payment status
-
-options = { user: "user", pass: "pass", id: "request_id here" }
-
-response = GreensmsRuby::Pay.check_status(options)
+sleep(3)
+puts "Pay Status"
+puts @client.pay.status(id: resp["request_id"])
