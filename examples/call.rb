@@ -7,8 +7,8 @@ require_relative "init"
 # puts resp
 
 puts "Call Send"
-# puts @client.call.send
-# puts @client.voice.send
+puts @client.call.send(to:"79260000000")
+puts @client.voice.send
 # puts @client.call.method_name
 # resp = @client.call.v1.send(to: "79260000000")
 # resp = @client.call.send(to: "79260000000")
