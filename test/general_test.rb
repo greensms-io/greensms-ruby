@@ -4,7 +4,6 @@ class GeneralTest < Minitest::Test
   def test_lookup
     @client = Utility::CLIENT
     resp = @client.whois.lookup(to: "79260000000")
-    puts resp
     has_def = resp.has_key?("def")
     has_region = resp.has_key?("region")
     assert_equal true, has_def && has_region
