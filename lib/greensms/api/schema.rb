@@ -1,6 +1,6 @@
 module GreenSMS
   class ::Hash
-    def deep_merge(second)
+    def merge_deep(second)
       merger = proc { |_, v1, v2| Hash === v1 && Hash === v2 ? v1.merge(v2, &merger) : Array === v1 && Array === v2 ? v1 | v2 : [:undefined, nil, :nil].include?(v2) ? v1 : v2 }
       merge(second.to_h, &merger)
     end
@@ -70,7 +70,7 @@ module GreenSMS
       },
     },
     "general" => {},
-    "voice" => common_schema.clone.deep_merge(
+    "voice" => common_schema.clone.merge_deep(
       {
         "v1" => {
           "send" => {
@@ -92,7 +92,7 @@ module GreenSMS
         },
       }
     ),
-    "pay" => common_schema.clone.deep_merge({
+    "pay" => common_schema.clone.merge_deep({
       "v1" => {
         "send" => {
           "type" => "object",
@@ -109,7 +109,7 @@ module GreenSMS
         },
       },
     }),
-    "sms" => common_schema.clone.deep_merge(
+    "sms" => common_schema.clone.merge_deep(
       {
         "v1" => {
           "send" => {
@@ -134,7 +134,7 @@ module GreenSMS
         },
       }
     ),
-    "viber" => common_schema.clone.deep_merge(
+    "viber" => common_schema.clone.merge_deep(
       {
         "v1" => {
           "send" => {
@@ -157,7 +157,7 @@ module GreenSMS
         },
       }
     ),
-    "social" => common_schema.clone.deep_merge(
+    "social" => common_schema.clone.merge_deep(
       {
         "v1" => {
           "send" => {
