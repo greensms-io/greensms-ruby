@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = spec.homepage
   spec.metadata["changelog_uri"] = spec.homepage
 
-  spec.add_development_dependency "bundler", ">= 1.0.0"
+  spec.add_development_dependency "bundler", ">= 2.1.2"
   spec.add_dependency "faraday"
   spec.add_dependency "json-schema"
   spec.add_dependency "rake"
